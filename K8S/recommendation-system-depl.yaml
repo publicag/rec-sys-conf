@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: recommendation-system-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: recommendationsystem
+  template:
+    metadata:
+      labels:
+        app: recommendationsystem
+    spec:
+      containers:
+        - name: recommendationsystem
+          imagePullPolicy: IfNotPresent
+          image: a
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: recommendation-clusterip-srv
+spec:
+  type: ClusterIP
+  selector:
+    app: recommendationsystem
+  ports:
+  - name: recommendationsystem
+    protocol: TCP
+    port: 5000
+    targetPort: 5000

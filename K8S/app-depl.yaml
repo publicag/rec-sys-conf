@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rec-sys
+spec:
+  selector:
+    matchLabels:
+      app: rec-sys
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: rec-sys
+    spec:
+      containers:
+      - name: rec-sys-app
+        image: a
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 80
